@@ -12,6 +12,20 @@ This project is a web-based flow for a sleeper bus booking service operating bet
 6.  **Real-time Availability**: Immediate updates on seat status to prevent double bookings.
 7.  **Passenger Details Management**: Capture name, age, gender, and contact info for each passenger.
 
+## SaaS Admin Dashboard
+The project includes a fully functional, premium-styled Admin Dashboard for managing the bus system.
+
+### Features
+1.  **SaaS-Style UI**: Modern, clean, and responsive design with sidebar navigation and light/dark theme compatibility.
+2.  **Dashboard Overview**: Real-time KPI cards for **Total Revenue**, **Total Bookings**, and **Occupancy Rate**, along with a visual "Recent Activity" feed.
+3.  **Booking Management**: Comprehensive table view to search, filter, and manage all bookings.
+4.  **Admin Actions**: Ability to **Cancel Bookings** directly from the admin panel with instant updates.
+
+### Access & Credentials
+*   **URL**: `http://localhost:8000/admin/login.html`
+*   **Email**: `admin@sleeper.com`
+*   **Password**: `admin123`
+
 ## Test Cases
 
 ### Functional Test Cases
