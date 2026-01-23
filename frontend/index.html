@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleeper | Premium Bus Travel</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="app-header">
+        <div class="container header-content">
+            <div class="logo">
+                <i class="ri-moon-clear-fill"></i> Sleeper
+            </div>
+            <nav class="nav-pills">
+                <button id="nav-book" class="nav-link active">Book Layout</button>
+                <button id="nav-manage" class="nav-link">My Bookings</button>
+                <button id="theme-toggle" class="nav-link" aria-label="Toggle Theme">
+                    <i class="ri-moon-line"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+
+        <!-- Booking Section -->
+        <section id="booking-section" class="active-section">
+            <div class="route-header">
+                <div class="route-info">
+                    <h1>Ahmedabad <i class="ri-arrow-right-line"></i> Mumbai</h1>
+                    <div class="route-meta">
+                        <span><i class="ri-bus-line"></i> Premium Sleeper A/C</span>
+                        <span><i class="ri-time-line"></i> Tonight, 22:00 Departure</span>
+                    </div>
+                </div>
+                <div class="date-selector">
+                    <label>Travel Date</label>
+                    <input type="date" id="travel-date" class="form-input">
+                </div>
+            </div>
+
+            <div class="booking-grid">
+                <!-- Left Column: Bus Layout -->
+                <div class="bus-container card">
+                    <div class="deck-container">
+                        <div class="deck">
+                            <h3 class="deck-label">Lower Deck</h3>
+                            <div id="lower-deck" class="bus-grid"></div>
+                        </div>
+                        <div class="deck">
+                            <h3 class="deck-label">Upper Deck</h3>
+                            <div id="upper-deck" class="bus-grid"></div>
+                        </div>
+                    </div>
+
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-box available"></div>
+                            <span>Available</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box selected"></div>
+                            <span>Selected</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box booked"></div>
+                            <span>Booked</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box female"></div>
+                            <span>Female</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Form -->
+                <aside class="booking-sidebar">
+                    <div class="card booking-card">
+                        <h2>Trip Details</h2>
+
+                        <div id="empty-state" class="empty-state">
+                            <i class="ri-armchair-line"></i>
+                            <p>Select seats to proceed</p>
+                        </div>
+
+                        <form id="booking-form" style="display: none;">
+                            <div class="selected-seats-info">
+                                <span class="label">Seats</span>
+                                <span class="value" id="selected-seat-display">--</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Passenger Name</label>
+                                <input type="text" id="p-name" class="form-input" placeholder="e.g. John Doe" required>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <label>Age</label>
+                                    <input type="number" id="p-age" class="form-input" placeholder="25" max="100"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <select id="p-gender" class="form-input">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>In-Journey Meals</label>
+                                <div id="meal-list" class="meal-options">
+                                    <!-- Meals generated by JS -->
+                                </div>
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <div class="price-summary">
+                                <div class="price-row">
+                                    <span>Ticket Base</span>
+                                    <span id="seat-price">₹0</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Meals & Add-ons</span>
+                                    <span id="meal-price">₹0</span>
+                                </div>
+                                <div class="price-row total">
+                                    <span>Total Payable</span>
+                                    <span id="total-price">₹0</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-primary" id="book-btn">
+                                <span>Confirm Booking</span>
+                                <div class="loader" id="btn-loader"></div>
+                            </button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Manage Bookings Section -->
+        <section id="manage-section" class="hidden-section">
+            <div class="card manage-card">
+                <h2>Manage My Booking</h2>
+                <p class="sub-text">Enter your booking ID to view details or cancel your ticket.</p>
+
+                <div class="search-box">
+                    <input type="text" id="manage-booking-id" class="form-input"
+                        placeholder="Enter Booking ID (e.g. a1b2c3d4)">
+                    <button id="search-booking-btn" class="btn-secondary">Find Booking</button>
+                </div>
+
+                <div id="booking-details-view" style="display: none;">
+                    <div class="divider"></div>
+                    <div class="ticket-details">
+                        <div class="ticket-row">
+                            <span class="label">Booking ID</span>
+                            <span class="value" id="view-booking-id"></span>
+                        </div>
+                        <div class="ticket-row">
+                            <span class="label">Passenger</span>
+                            <span class="value" id="view-passenger"></span>
+                        </div>
+                        <div class="ticket-row">
+                            <span class="label">Date</span>
+                            <span class="value" id="view-date"></span>
+                        </div>
+                        <div class="ticket-row">
+                            <span class="label">Status</span>
+                            <span class="value badge" id="view-status">Confirmed</span>
+                        </div>
+                    </div>
+
+                    <button id="cancel-booking-btn" class="bg-danger">
+                        <i class="ri-close-circle-line"></i> Cancel Booking
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="ri-check-line"></i>
+            </div>
+            <h2>Booking Confirmed!</h2>
+            <p>Your ticket has been successfully booked.</p>
+
+            <div class="booking-id-box">
+                <span class="label">Booking ID</span>
+                <span class="id-text" id="success-id"></span>
+            </div>
+
+            <div class="prediction-box">
+                <div class="pred-header">
+                    <i class="ri-magic-line"></i> AI Confirmation Prediction
+                </div>
+                <div class="pred-body">
+                    <div class="pred-stat">
+                        <span class="val" id="pred-chance">--%</span>
+                        <span class="lbl">Probability</span>
+                    </div>
+                    <div class="pred-stat">
+                        <span class="val" id="pred-risk">--</span>
+                        <span class="lbl">Risk Level</span>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="location.reload()" class="btn-primary">Done</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

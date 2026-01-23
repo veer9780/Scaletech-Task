@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sleeper Admin | Bookings</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <i class="ri-moon-clear-fill"></i> Sleeper
+        </div>
+        <nav class="nav-menu">
+            <a href="dashboard.html" class="nav-item"><i class="ri-dashboard-line"></i> Dashboard</a>
+            <a href="bookings.html" class="nav-item active"><i class="ri-ticket-line"></i> Bookings</a>
+        </nav>
+        <div class="user-profile">
+            <div class="avatar">A</div>
+            <div class="info">
+                <span class="user-name">Admin User</span>
+                <span class="user-role">Super Admin</span>
+            </div>
+            <a href="#" onclick="logout()" style="margin-left: auto; color: var(--text-muted);"><i
+                    class="ri-logout-box-r-line"></i></a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-header">
+            <h1 class="page-title">Bookings Management</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="window.location.href='/'"><i class="ri-add-line"></i> Add
+                    Booking</button>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+
+            <div class="table-card">
+                <div class="card-header" style="background: #F8FAFC; border-bottom: 1px solid var(--border);">
+                    <!-- Search Filter Mock -->
+                    <div style="display: flex; gap: 1rem; width: 100%;">
+                        <input type="text" placeholder="Search by Booking ID or Name..." class="form-input"
+                            style="max-width: 300px; background: white;">
+                        <select class="form-input" style="max-width: 150px; background: white;">
+                            <option>All Status</option>
+                            <option>Confirmed</option>
+                            <option>Cancelled</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Passenger</th>
+                            <th>Date</th>
+                            <th>Seats</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookings-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="admin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+            loadBookingsPage();
+        });
+    </script>
+</body>
+
+</html>

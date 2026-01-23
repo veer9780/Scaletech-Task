@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sleeper Admin | Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <i class="ri-moon-clear-fill"></i> Sleeper
+        </div>
+        <nav class="nav-menu">
+            <a href="dashboard.html" class="nav-item active"><i class="ri-dashboard-line"></i> Dashboard</a>
+            <a href="bookings.html" class="nav-item"><i class="ri-ticket-line"></i> Bookings</a>
+        </nav>
+        <div class="user-profile">
+            <div class="avatar">A</div>
+            <div class="info">
+                <span class="user-name">Admin User</span>
+                <span class="user-role">Super Admin</span>
+            </div>
+            <a href="#" onclick="logout()" style="margin-left: auto; color: var(--text-muted);"><i
+                    class="ri-logout-box-r-line"></i></a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-header">
+            <h1 class="page-title">Dashboard</h1>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- KPIs -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">Total Revenue</div>
+                    <div class="kpi-value">₹124,500</div>
+                    <div class="kpi-trend trend-up"><i class="ri-arrow-up-line"></i> 12% vs last month</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Total Bookings</div>
+                    <div class="kpi-value" id="kpi-bookings">--</div>
+                    <div class="kpi-trend trend-up"><i class="ri-arrow-up-line"></i> 8% vs last month</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Occupancy Rate</div>
+                    <div class="kpi-value">78%</div>
+                    <div class="kpi-trend trend-down"><i class="ri-arrow-down-line"></i> 2% vs last month</div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="table-card">
+                <div class="card-header">
+                    <h3 class="card-title">Recent Activity</h3>
+                    <a href="bookings.html" style="font-size: 0.9rem; color: var(--primary); font-weight: 500;">View
+                        All</a>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Passenger</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activity-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="admin.js"></script>
+    <script>
+        // Init Dashboard Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+            loadDashboardData();
+        });
+    </script>
+</body>
+
+</html>

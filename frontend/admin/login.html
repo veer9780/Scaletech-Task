@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sleeper Admin | Login</title>
+    <link rel="stylesheet" href="admin.css">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body class="login-body">
+
+    <div class="login-card">
+        <div class="login-header">
+            <div class="login-logo"><i class="ri-moon-clear-fill"></i> Sleeper</div>
+            <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Welcome Back</h2>
+            <p style="color: var(--text-muted);">Sign in to your admin dashboard</p>
+        </div>
+
+        <form id="login-form">
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" placeholder="admin@sleeper.com" value="admin@sleeper.com"
+                    required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-input" placeholder="••••••••" value="admin123" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Sign In</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+            <a href="#">Forgot password?</a>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
