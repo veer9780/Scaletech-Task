@@ -3,6 +3,8 @@
 ## Project Overview
 This project is a web-based flow for a sleeper bus booking service operating between Ahmedabad and Mumbai. It features a unique integration of meal booking during the checkout process and a booking confirmation prediction model.
 
+**🚀 Live Demo:** [https://scaletech-task.onrender.com](https://scaletech-task.onrender.com)
+
 ## Features
 1.  **Bus Availability & Search**: View the single bus operating between Ahmedabad and Mumbai with intermediate stops (e.g., Vadodara, Surat).
 2.  **Interactive Seat Selection**: View available sleeper berths and select specific seats.
